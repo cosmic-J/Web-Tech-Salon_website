@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Products - Glow & Bloom Beauty</title>
+  <link rel="stylesheet" href="style.css" />
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Feather icons -->
+  <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+</head>
+
+<body class="font-montserrat bg-white text-gray-800">
+  <custom-navbar></custom-navbar>
+
+  <main>
+    <!-- Products Header -->
+    <section class="relative py-20 bg-gradient-to-r from-pink-50 to-purple-50">
+      <div class="max-w-7xl mx-auto px-6 text-center">
+        <h1 class="text-4xl md:text-5xl font-playfair font-bold mb-6">Our Premium Products</h1>
+        <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+          Discover our carefully curated collection of salon-quality products designed to enhance your natural beauty
+        </p>
+      </div>
+    </section>
+
+    <!-- Products Filter -->
+    <section class="py-8 bg-white border-b">
+      <div class="max-w-7xl mx-auto px-6">
+        <div class="flex flex-wrap gap-4 justify-center">
+          <button class="filter-btn active" data-filter="all">All Products</button>
+          <button class="filter-btn" data-filter="moisturizer">Moisturizers</button>
+          <button class="filter-btn" data-filter="sunscreen">Sunscreens</button>
+          <button class="filter-btn" data-filter="serum">Serums</button>
+          <button class="filter-btn" data-filter="cleanser">Cleansers</button>
+          <button class="filter-btn" data-filter="hair">Hair Care</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Products Grid -->
+    <section class="py-16 px-6 max-w-7xl mx-auto">
+      <div id="products-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
+        <!-- Products will be dynamically loaded here -->
+      </div>
+    </section>
+
+    <!-- Product Modal -->
+    <div id="product-modal" class="fixed inset-0 bg-black bg-opacity-50 z-50 hidden">
+      <div class="flex items-center justify-center min-h-screen p-4">
+        <div class="bg-white rounded-2xl max-w-4xl w-full max-h-[90vh] overflow-y-auto">
+          <div class="p-6">
+            <div class="flex justify-between items-start mb-6">
+              <h2 id="modal-title" class="text-3xl font-playfair font-bold"></h2>
+              <button id="close-modal" class="text-gray-500 hover:text-gray-700">
+                <i data-feather="x" class="w-6 h-6"></i>
+              </button>
+            </div>
+            
+            <div class="grid md:grid-cols-2 gap-8">
+              <div>
+                <img id="modal-image" src="" alt="" class="w-full h-80 object-cover rounded-xl shadow-lg">
+                <div class="flex gap-4 mt-4">
+                  <button id="add-to-cart-modal" class="flex-1 bg-pink-500 text-white py-3 rounded-lg font-semibold hover:bg-pink-600 transition-colors">
+                    Add to Cart
+                  </button>
+                  <button class="px-4 py-3 border border-pink-500 text-pink-500 rounded-lg hover:bg-pink-50 transition-colors">
+                    <i data-feather="heart" class="w-5 h-5"></i>
+                  </button>
+                </div>
+              </div>
+              
+              <div>
+                <div class="flex items-center gap-4 mb-4">
+                  <span id="modal-price" class="text-3xl font-bold text-pink-500"></span>
+                  <span id="modal-rating" class="flex items-center text-yellow-400"></span>
+                </div>
+                
+                <p id="modal-description" class="text-gray-600 mb-6"></p>
+                
+                <div class="space-y-4">
+                  <div>
+                    <h4 class="font-semibold mb-2">Key Benefits</h4>
+                    <ul id="modal-benefits" class="list-disc list-inside text-gray-600 space-y-1"></ul>
+                  </div>
+                  
+                  <div>
+                    <h4 class="font-semibold mb-2">Ingredients</h4>
+                    <p id="modal-ingredients" class="text-gray-600"></p>
+                  </div>
+                  
+                  <div>
+                    <h4 class="font-semibold mb-2">How to Use</h4>
+                    <p id="modal-usage" class="text-gray-600"></p>
+                  </div>
+                  
+                  <div class="flex items-center gap-4">
+                    <label class="font-semibold">Quantity:</label>
+                    <div class="flex items-center border rounded-lg">
+                      <button class="px-3 py-2 text-gray-600 hover:text-pink-500">-</button>
+                      <span class="px-3 py-2">1</span>
+                      <button class="px-3 py-2 text-gray-600 hover:text-pink-500">+</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <custom-footer></custom-footer>
+
+  <script src="components/navbar.js"></script>
+  <script src="components/footer.js"></script>
+  <script src="products.js"></script>
+  <link rel="stylesheet" href="style.css" />
+  <script>
+    feather.replace();
+  </script>
+</body>
+</html>

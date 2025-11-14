@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Glow & Bloom Beauty Emporium & CrownBraids</title>
+  <link rel="stylesheet" href="style.css" />
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Feather icons for social SVGs -->
+  <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+</head>
+
+<body class="font-montserrat bg-white text-gray-800">
+  <custom-navbar></custom-navbar>
+
+  <main>
+    <!-- Hero Section with Slider -->
+    <section class="relative h-screen overflow-hidden">
+      <div id="hero-slider" class="flex h-full w-[400vw] transition-transform duration-1000 ease-in-out">
+        <div class="slide" style="background-image: url('components/images/img_home_1.jpg');"></div>
+        <div class="slide" style="background-image: url('components/images/img_home_2.jpg');"></div>
+        <div class="slide" style="background-image: url('components/images/img_home_3.jpg');"></div>
+      </div>
+      <!-- Slider Arrow Buttons -->
+      <div class="absolute bottom-8 right-10 flex gap-4 z-20">
+        <button id="slider-left" class="w-12 h-12 flex items-center justify-center rounded-full bg-white shadow-lg hover:bg-pink-100 transition-all" aria-label="Previous Slide">
+          <svg width="24" height="24" fill="none" stroke="#973c3b" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7" />
+          </svg>
+        </button>
+        <button id="slider-right" class="w-12 h-12 flex items-center justify-center rounded-full bg-white shadow-lg hover:bg-pink-100 transition-all" aria-label="Next Slide">
+          <svg width="24" height="24" fill="none" stroke="#973c3b" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+          </svg>
+        </button>
+      </div>
+    </section>
+
+    <!-- Featured Products with Rainbow Animation -->
+    <section id="products" class="relative py-20 px-6 max-w-7xl mx-auto overflow-hidden">
+      <!-- Rainbow Animation Background -->
+      <div class="rainbow-container absolute inset-0 overflow-hidden">
+        <div class="h"></div>
+        <div class="v"></div>
+      </div>
+      
+      <!-- Products Content -->
+      <div class="relative z-10">
+        <h2 class="text-3xl md:text-4xl font-playfair font-bold text-center mb-16">Our Signature Collection</h2>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
+          <div class="bg-white/90 backdrop-blur-sm rounded-xl shadow-md overflow-hidden transition-transform hover:scale-105 product-card">
+           <div class="h-64 bg-[url('/components/images/image.jpg')] bg-cover bg-center"></div>
+            <div class="p-6">
+              <h3 class="text-xl font-semibold mb-2">Radiant Glow Serum</h3>
+              <p class="text-gray-600 mb-4">Illuminate your complexion with our vitamin-rich formula</p>
+              <div class="flex justify-between items-center">
+                <span class="text-pink-500 font-bold">$49.99</span>
+                <button class="text-pink-500 hover:text-pink-600 flex items-center" data-add-to-cart>
+                  <i data-feather="shopping-cart" class="mr-2"></i> Add to Cart
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <div class="bg-white/90 backdrop-blur-sm rounded-xl shadow-md overflow-hidden transition-transform hover:scale-105 product-card">
+            <div class="h-64 bg-[url('http://static.photos/cosmetic/640x360/2')] bg-cover bg-center"></div>
+            <div class="p-6">
+              <h3 class="text-xl font-semibold mb-2">Bloom Hydration Cream</h3>
+              <p class="text-gray-600 mb-4">24-hour moisture with botanical extracts</p>
+              <div class="flex justify-between items-center">
+                <span class="text-pink-500 font-bold">$39.99</span>
+                <button class="text-pink-500 hover:text-pink-600 flex items-center" data-add-to-cart>
+                  <i data-feather="shopping-cart" class="mr-2"></i> Add to Cart
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <div class="bg-white/90 backdrop-blur-sm rounded-xl shadow-md overflow-hidden transition-transform hover:scale-105 product-card">
+            <div class="h-64 bg-[url('http://static.photos/cosmetic/640x360/3')] bg-cover bg-center"></div>
+            <div class="p-6">
+              <h3 class="text-xl font-semibold mb-2">Luminous Eye Complex</h3>
+              <p class="text-gray-600 mb-4">Brighten and depuff tired eyes</p>
+              <div class="flex justify-between items-center">
+                <span class="text-pink-500 font-bold">$34.99</span>
+                <button class="text-pink-500 hover:text-pink-600 flex items-center" data-add-to-cart>
+                  <i data-feather="shopping-cart" class="mr-2"></i> Add to Cart
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- About Section -->
+<section class="py-20 bg-gray-50">
+  <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row items-center">
+    <div class="md:w-1/2 mb-10 md:mb-0 md:pr-10">
+      <div class="h-96 bg-[url('components/images/phil.jpg')] bg-cover bg-center rounded-xl shadow-lg"></div>
+    </div>
+
+    
+    <div class="md:w-1/2">
+      <h2 class="text-3xl md:text-4xl font-playfair font-bold mb-6">Our Philosophy</h2>
+      <p class="text-gray-600 mb-4">At Glow & Bloom, we believe beauty should be simple, effective, and joyful. Our products are crafted with clean, high-performance ingredients that work in harmony with your skin.</p>
+      <p class="text-gray-600 mb-6">Every formula is dermatologist-tested, cruelty-free, and designed to enhance your natural beauty without compromise.</p>
+      <a href="about.html" class="inline-block border-2 border-[#8B3A3A] text-[#8B3A3A] hover:bg-[#8B3A3A] hover:text-white px-6 py-2 rounded-full font-medium transition-all">Our Story</a>
+    </div>
+  </div>
+</section>
+
+  </main>
+
+  <custom-footer></custom-footer>
+
+  <script src="components/navbar.js"></script>
+  <script src="components/footer.js"></script>
+  <script src="script.js"></script>
+  <script>
+    feather.replace();
+  </script>
+</body>
+</html>

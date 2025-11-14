@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Services - Glow & Bloom Beauty</title>
+  <link rel="stylesheet" href="style.css" />
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Feather icons -->
+  <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+</head>
+
+<body class="font-montserrat bg-white text-gray-800">
+  <custom-navbar></custom-navbar>
+
+  <main>
+    <!-- Services Header -->
+    <section class="relative py-20 bg-gradient-to-r from-pink-50 to-purple-50">
+      <div class="max-w-7xl mx-auto px-6 text-center">
+        <h1 class="text-4xl md:text-5xl font-playfair font-bold mb-6">Our Beauty Services</h1>
+        <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+          Experience luxury beauty treatments performed by our certified experts. 
+          Discover your natural radiance with our personalized services.
+        </p>
+      </div>
+    </section>
+
+    <!-- Services Categories -->
+    <section class="py-16 px-6 max-w-7xl mx-auto">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
+        <!-- Facial Treatments -->
+        <div class="bg-white rounded-2xl shadow-lg overflow-hidden service-card">
+          <div class="h-64 bg-gradient-to-br from-pink-100 to-purple-100 flex items-center justify-center">
+            <i data-feather="smile" class="w-16 h-16 text-pink-500"></i>
+          </div>
+          <div class="p-8">
+            <h3 class="text-2xl font-playfair font-bold mb-4">Facial Treatments</h3>
+            <p class="text-gray-600 mb-6">
+              Rejuvenate your skin with our customized facial treatments designed to address your specific skin concerns.
+            </p>
+            <button class="service-category-btn w-full bg-pink-500 text-white py-3 rounded-lg font-semibold hover:bg-pink-600 transition-colors" data-category="facial">
+              View Services
+            </button>
+          </div>
+        </div>
+
+        <!-- Skin Care -->
+        <div class="bg-white rounded-2xl shadow-lg overflow-hidden service-card">
+          <div class="h-64 bg-gradient-to-br from-blue-100 to-cyan-100 flex items-center justify-center">
+            <i data-feather="star" class="w-16 h-16 text-blue-500"></i>
+          </div>
+          <div class="p-8">
+            <h3 class="text-2xl font-playfair font-bold mb-4">Skin Care</h3>
+            <p class="text-gray-600 mb-6">
+              Advanced skin treatments and consultations to help you achieve healthy, glowing skin.
+            </p>
+            <button class="service-category-btn w-full bg-blue-500 text-white py-3 rounded-lg font-semibold hover:bg-blue-600 transition-colors" data-category="skincare">
+              View Services
+            </button>
+          </div>
+        </div>
+
+        <!-- Hair Services -->
+        <div class="bg-white rounded-2xl shadow-lg overflow-hidden service-card">
+          <div class="h-64 bg-gradient-to-br from-yellow-100 to-orange-100 flex items-center justify-center">
+            <i data-feather="scissors" class="w-16 h-16 text-orange-500"></i>
+          </div>
+          <div class="p-8">
+            <h3 class="text-2xl font-playfair font-bold mb-4">Hair Services</h3>
+            <p class="text-gray-600 mb-6">
+              Transform your hair with our expert styling, coloring, and treatment services.
+            </p>
+            <button class="service-category-btn w-full bg-orange-500 text-white py-3 rounded-lg font-semibold hover:bg-orange-600 transition-colors" data-category="hair">
+              View Services
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- All Services Grid -->
+      <div id="services-grid">
+        <!-- Facial Treatments -->
+        <div class="service-category-section" id="facial-services">
+          <h2 class="text-3xl font-playfair font-bold mb-12 text-center">Facial Treatments</h2>
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <!-- Service Card 1 -->
+            <div class="bg-white rounded-xl shadow-md overflow-hidden service-item-card">
+              <img src="https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?w=400&h=300&fit=crop" alt="Hydrating Facial" class="w-full h-48 object-cover">
+              <div class="p-6">
+                <h3 class="text-xl font-semibold mb-2">Signature Hydrating Facial</h3>
+                <p class="text-gray-600 mb-4">Deep hydration treatment for dry and dehydrated skin.</p>
+                <div class="flex items-center justify-between">
+                  <span class="text-pink-500 font-bold text-xl">$85</span>
+                  <span class="text-sm text-gray-500">60 min</span>
+                </div>
+                <button class="book-service-btn w-full mt-4 bg-pink-500 text-white py-2 rounded-lg font-semibold hover:bg-pink-600 transition-colors" data-service="Signature Hydrating Facial">
+                  Book Now
+                </button>
+              </div>
+            </div>
+
+            <!-- Service Card 2 -->
+            <div class="bg-white rounded-xl shadow-md overflow-hidden service-item-card">
+              <img src="https://images.unsplash.com/photo-1556228578-2f6e58ade114?w=400&h=300&fit=crop" alt="Anti-Aging Facial" class="w-full h-48 object-cover">
+              <div class="p-6">
+                <h3 class="text-xl font-semibold mb-2">Anti-Aging Rejuvenation</h3>
+                <p class="text-gray-600 mb-4">Target fine lines and wrinkles with advanced techniques.</p>
+                <div class="flex items-center justify-between">
+                  <span class="text-pink-500 font-bold text-xl">$120</span>
+                  <span class="text-sm text-gray-500">75 min</span>
+                </div>
+                <button class="book-service-btn w-full mt-4 bg-pink-500 text-white py-2 rounded-lg font-semibold hover:bg-pink-600 transition-colors" data-service="Anti-Aging Rejuvenation">
+                  Book Now
+                </button>
+              </div>
+            </div>
+
+            <!-- Service Card 3 -->
+            <div class="bg-white rounded-xl shadow-md overflow-hidden service-item-card">
+              <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=400&h=300&fit=crop" alt="Acne Treatment" class="w-full h-48 object-cover">
+              <div class="p-6">
+                <h3 class="text-xl font-semibold mb-2">Acne Clear Treatment</h3>
+                <p class="text-gray-600 mb-4">Specialized treatment for acne-prone skin.</p>
+                <div class="flex items-center justify-between">
+                  <span class="text-pink-500 font-bold text-xl">$95</span>
+                  <span class="text-sm text-gray-500">70 min</span>
+                </div>
+                <button class="book-service-btn w-full mt-4 bg-pink-500 text-white py-2 rounded-lg font-semibold hover:bg-pink-600 transition-colors" data-service="Acne Clear Treatment">
+                  Book Now
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Skin Care Services -->
+        <div class="service-category-section mt-16" id="skincare-services">
+          <h2 class="text-3xl font-playfair font-bold mb-12 text-center">Skin Care Services</h2>
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <!-- Service Card 1 -->
+            <div class="bg-white rounded-xl shadow-md overflow-hidden service-item-card">
+              <img src="https://images.unsplash.com/photo-1596462502278-27bfdc403348?w=400&h=300&fit=crop" alt="Chemical Peel" class="w-full h-48 object-cover">
+              <div class="p-6">
+                <h3 class="text-xl font-semibold mb-2">Advanced Chemical Peel</h3>
+                <p class="text-gray-600 mb-4">Resurface and renew your skin with our professional peel.</p>
+                <div class="flex items-center justify-between">
+                  <span class="text-blue-500 font-bold text-xl">$150</span>
+                  <span class="text-sm text-gray-500">45 min</span>
+                </div>
+                <button class="book-service-btn w-full mt-4 bg-blue-500 text-white py-2 rounded-lg font-semibold hover:bg-blue-600 transition-colors" data-service="Advanced Chemical Peel">
+                  Book Now
+                </button>
+              </div>
+            </div>
+
+            <!-- Service Card 2 -->
+            <div class="bg-white rounded-xl shadow-md overflow-hidden service-item-card">
+              <img src="https://images.unsplash.com/photo-1570194065650-2f276eef1f5a?w=400&h=300&fit=crop" alt="Microdermabrasion" class="w-full h-48 object-cover">
+              <div class="p-6">
+                <h3 class="text-xl font-semibold mb-2">Microdermabrasion</h3>
+                <p class="text-gray-600 mb-4">Exfoliate and rejuvenate your skin for a fresh glow.</p>
+                <div class="flex items-center justify-between">
+                  <span class="text-blue-500 font-bold text-xl">$110</span>
+                  <span class="text-sm text-gray-500">50 min</span>
+                </div>
+                <button class="book-service-btn w-full mt-4 bg-blue-500 text-white py-2 rounded-lg font-semibold hover:bg-blue-600 transition-colors" data-service="Microdermabrasion">
+                  Book Now
+                </button>
+              </div>
+            </div>
+
+            <!-- Service Card 3 -->
+            <div class="bg-white rounded-xl shadow-md overflow-hidden service-item-card">
+              <img src="https://images.unsplash.com/photo-1556228720-195a672e8a03?w=400&h=300&fit=crop" alt="LED Therapy" class="w-full h-48 object-cover">
+              <div class="p-6">
+                <h3 class="text-xl font-semibold mb-2">LED Light Therapy</h3>
+                <p class="text-gray-600 mb-4">Reduce inflammation and promote collagen production.</p>
+                <div class="flex items-center justify-between">
+                  <span class="text-blue-500 font-bold text-xl">$90</span>
+                  <span class="text-sm text-gray-500">30 min</span>
+                </div>
+                <button class="book-service-btn w-full mt-4 bg-blue-500 text-white py-2 rounded-lg font-semibold hover:bg-blue-600 transition-colors" data-service="LED Light Therapy">
+                  Book Now
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Hair Services -->
+        <div class="service-category-section mt-16" id="hair-services">
+          <h2 class="text-3xl font-playfair font-bold mb-12 text-center">Hair Services</h2>
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <!-- Service Card 1 -->
+            <div class="bg-white rounded-xl shadow-md overflow-hidden service-item-card">
+              <img src="https://images.unsplash.com/photo-1560066984-138dadb4c035?w=400&h=300&fit=crop" alt="Hair Cut" class="w-full h-48 object-cover">
+              <div class="p-6">
+                <h3 class="text-xl font-semibold mb-2">Professional Hair Cut</h3>
+                <p class="text-gray-600 mb-4">Custom haircut to suit your face shape and style.</p>
+                <div class="flex items-center justify-between">
+                  <span class="text-orange-500 font-bold text-xl">$65</span>
+                  <span class="text-sm text-gray-500">60 min</span>
+                </div>
+                <button class="book-service-btn w-full mt-4 bg-orange-500 text-white py-2 rounded-lg font-semibold hover:bg-orange-600 transition-colors" data-service="Professional Hair Cut">
+                  Book Now
+                </button>
+              </div>
+            </div>
+
+            <!-- Service Card 2 -->
+            <div class="bg-white rounded-xl shadow-md overflow-hidden service-item-card">
+              <img src="https://images.unsplash.com/photo-1559599101-f09722fb4948?w=400&h=300&fit=crop" alt="Hair Color" class="w-full h-48 object-cover">
+              <div class="p-6">
+                <h3 class="text-xl font-semibold mb-2">Premium Hair Coloring</h3>
+                <p class="text-gray-600 mb-4">Expert coloring with premium products for vibrant results.</p>
+                <div class="flex items-center justify-between">
+                  <span class="text-orange-500 font-bold text-xl">$120+</span>
+                  <span class="text-sm text-gray-500">120 min</span>
+                </div>
+                <button class="book-service-btn w-full mt-4 bg-orange-500 text-white py-2 rounded-lg font-semibold hover:bg-orange-600 transition-colors" data-service="Premium Hair Coloring">
+                  Book Now
+                </button>
+              </div>
+            </div>
+
+            <!-- Service Card 3 -->
+            <div class="bg-white rounded-xl shadow-md overflow-hidden service-item-card">
+              <img src="https://images.unsplash.com/photo-1595475207225-428b62bda831?w=400&h=300&fit=crop" alt="Hair Treatment" class="w-full h-48 object-cover">
+              <div class="p-6">
+                <h3 class="text-xl font-semibold mb-2">Intensive Hair Treatment</h3>
+                <p class="text-gray-600 mb-4">Repair and restore damaged hair with our deep conditioning.</p>
+                <div class="flex items-center justify-between">
+                  <span class="text-orange-500 font-bold text-xl">$75</span>
+                  <span class="text-sm text-gray-500">45 min</span>
+                </div>
+                <button class="book-service-btn w-full mt-4 bg-orange-500 text-white py-2 rounded-lg font-semibold hover:bg-orange-600 transition-colors" data-service="Intensive Hair Treatment">
+                  Book Now
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Booking Modal -->
+    <div id="booking-modal" class="fixed inset-0 bg-black bg-opacity-50 z-50 hidden">
+      <div class="flex items-center justify-center min-h-screen p-4">
+        <div class="bg-white rounded-2xl max-w-md w-full">
+          <div class="p-6">
+            <div class="flex justify-between items-start mb-6">
+              <h2 id="modal-service-name" class="text-2xl font-playfair font-bold"></h2>
+              <button id="close-booking-modal" class="text-gray-500 hover:text-gray-700">
+                <i data-feather="x" class="w-6 h-6"></i>
+              </button>
+            </div>
+            
+            <form id="booking-form" class="space-y-4">
+              <div>
+                <label class="block text-sm font-medium text-gray-700 mb-1">Full Name</label>
+                <input type="text" required class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-500">
+              </div>
+              
+              <div>
+                <label class="block text-sm font-medium text-gray-700 mb-1">Email</label>
+                <input type="email" required class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-500">
+              </div>
+              
+              <div>
+                <label class="block text-sm font-medium text-gray-700 mb-1">Phone</label>
+                <input type="tel" required class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-500">
+              </div>
+              
+              <div>
+                <label class="block text-sm font-medium text-gray-700 mb-1">Preferred Date</label>
+                <input type="date" required class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-500">
+              </div>
+              
+              <div>
+                <label class="block text-sm font-medium text-gray-700 mb-1">Preferred Time</label>
+                <select required class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-500">
+                  <option value="">Select a time</option>
+                  <option value="09:00">9:00 AM</option>
+                  <option value="10:00">10:00 AM</option>
+                  <option value="11:00">11:00 AM</option>
+                  <option value="12:00">12:00 PM</option>
+                  <option value="13:00">1:00 PM</option>
+                  <option value="14:00">2:00 PM</option>
+                  <option value="15:00">3:00 PM</option>
+                  <option value="16:00">4:00 PM</option>
+                </select>
+              </div>
+              
+              <div>
+                <label class="block text-sm font-medium text-gray-700 mb-1">Special Requests</label>
+                <textarea rows="3" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-500"></textarea>
+              </div>
+              
+              <button type="submit" class="w-full bg-pink-500 text-white py-3 rounded-lg font-semibold hover:bg-pink-600 transition-colors">
+                Confirm Booking
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CTA Section -->
+    <section class="py-16 bg-gradient-to-r from-pink-50 to-purple-50">
+      <div class="max-w-4xl mx-auto text-center px-6">
+        <h2 class="text-3xl md:text-4xl font-playfair font-bold mb-6">Ready to Experience Luxury Beauty?</h2>
+        <p class="text-xl text-gray-600 mb-8">
+          Book your consultation today and let our experts help you discover your best self.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <a href="contact.html" class="bg-pink-500 text-white px-8 py-3 rounded-lg font-semibold hover:bg-pink-600 transition-colors">
+            Contact Us
+          </a>
+          <a href="tel:+1234567890" class="border border-pink-500 text-pink-500 px-8 py-3 rounded-lg font-semibold hover:bg-pink-50 transition-colors">
+            Call Now
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <custom-footer></custom-footer>
+
+  <script src="components/navbar.js"></script>
+  <script src="components/footer.js"></script>
+  <script>
+    // Services page functionality
+    document.addEventListener("DOMContentLoaded", () => {
+      const categoryButtons = document.querySelectorAll('.service-category-btn');
+      const bookServiceButtons = document.querySelectorAll('.book-service-btn');
+      const bookingModal = document.getElementById('booking-modal');
+      const closeBookingModal = document.getElementById('close-booking-modal');
+      const bookingForm = document.getElementById('booking-form');
+      
+      // Category button functionality
+      categoryButtons.forEach(button => {
+        button.addEventListener('click', () => {
+          const category = button.getAttribute('data-category');
+          const targetSection = document.getElementById(`${category}-services`);
+          
+          if (targetSection) {
+            targetSection.scrollIntoView({ behavior: 'smooth' });
+          }
+        });
+      });
+      
+      // Book service button functionality
+      bookServiceButtons.forEach(button => {
+        button.addEventListener('click', () => {
+          const serviceName = button.getAttribute('data-service');
+          document.getElementById('modal-service-name').textContent = serviceName;
+          bookingModal.classList.remove('hidden');
+        });
+      });
+      
+      // Close booking modal
+      closeBookingModal.addEventListener('click', () => {
+        bookingModal.classList.add('hidden');
+      });
+      
+      // Close modal when clicking outside
+      bookingModal.addEventListener('click', (e) => {
+        if (e.target === bookingModal) {
+          bookingModal.classList.add('hidden');
+        }
+      });
+      
+      // Booking form submission
+      bookingForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const serviceName = document.getElementById('modal-service-name').textContent;
+        alert(`Thank you! Your booking for ${serviceName} has been received. We will contact you to confirm your appointment.`);
+        bookingModal.classList.add('hidden');
+        bookingForm.reset();
+      });
+      
+      // Initialize feather icons
+      if (typeof feather !== 'undefined') {
+        feather.replace();
+      }
+    });
+  </script>
+  
+  <style>
+    /* Service card hover effects */
+    .service-card {
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    
+    .service-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+    }
+    
+    .service-item-card {
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    
+    .service-item-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    }
+    
+    /* Smooth scrolling for category sections */
+    .service-category-section {
+      scroll-margin-top: 100px;
+    }
+    
+    /* Modal animation */
+    #booking-modal {
+      animation: fadeIn 0.3s ease;
+    }
+    
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+      }
+      to {
+        opacity: 1;
+      }
+    }
+  </style>
+</body>
+</html>
