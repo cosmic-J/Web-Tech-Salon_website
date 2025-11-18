@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Order Confirmation - Glow & Bloom Beauty</title>
+    <link rel="stylesheet" href="style.css" />
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Feather icons -->
+    <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+    <style>
+        .price-color {
+            color: #8B3A3A;
+        }
+        .btn-primary {
+            background-color: #8B3A3A;
+            color: white;
+        }
+        .btn-primary:hover {
+            background-color: #6B2A2A;
+        }
+    </style>
+</head>
+<body class="font-montserrat bg-gray-50">
+    <custom-navbar></custom-navbar>
+
+    <main class="min-h-screen py-8">
+        <div class="max-w-4xl mx-auto px-4">
+            <div class="bg-white rounded-lg shadow-sm p-8 text-center">
+                <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <i data-feather="check" class="w-8 h-8 text-green-600"></i>
+                </div>
+                
+                <h1 class="text-3xl font-playfair font-bold mb-4">Order Confirmed!</h1>
+                <p class="text-gray-600 mb-6">Thank you for your purchase. Your order has been successfully placed.</p>
+                
+                <div id="order-details" class="bg-gray-50 rounded-lg p-6 mb-6 text-left">
+                    <!-- Order details will be populated here -->
+                </div>
+
+                <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                    <button id="download-receipt" class="btn-primary text-white px-6 py-3 rounded-lg font-semibold hover:bg-[#6B2A2A] transition-colors">
+                        <i data-feather="download" class="w-4 h-4 mr-2 inline"></i>
+                        Download Receipt
+                    </button>
+                    <a href="products.html" class="border border-[#8B3A3A] text-[#8B3A3A] px-6 py-3 rounded-lg font-semibold hover:bg-[#8B3A3A] hover:text-white transition-colors">
+                        Continue Shopping
+                    </a>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <custom-footer></custom-footer>
+
+    <script src="components/navbar.js"></script>
+    <script src="components/footer.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            feather.replace();
+            
+            const order = JSON.parse(localStorage.getItem('lastOrder'));
+            const orderDetails = document.getElementById('order-details');
+
+            if (!order) {
+                orderDetails.innerHTML = '<p class="text-gray-500">No order details found.</p>';
+                return;
+            }
+
+            orderDetails.innerHTML = `
+                <div class="grid md:grid-cols-2 gap-6">
+                    <div>
+                        <h3 class="font-semibold mb-2">Order Information</h3>
+                        <p><strong>Order ID:</strong> ${order.orderId}</p>
+                        <p><strong>Date:</strong> ${new Date(order.createdAt).toLocaleDateString()}</p>
+                        <p><strong>Status:</strong> <span class="text-green-600">${order.orderStatus}</span></p>
+                    </div>
+                    
+                    <div>
+                        <h3 class="font-semibold mb-2">Customer Information</h3>
+                        <p><strong>Name:</strong> ${order.customerName}</p>
+                        <p><strong>Email:</strong> ${order.email}</p>
+                        <p><strong>Phone:</strong> ${order.phone}</p>
+                    </div>
+                </div>
+                
+                <div class="mt-6">
+                    <h3 class="font-semibold mb-2">Shipping Address</h3>
+                    <p>${order.address.street}, ${order.address.city}, ${order.address.state} ${order.address.zipCode}, ${order.address.country}</p>
+                </div>
+                
+                <div class="mt-6">
+                    <h3 class="font-semibold mb-2">Order Items</h3>
+                    ${order.products.map(product => `
+                        <div class="flex justify-between py-2 border-b">
+                            <div>
+                                <p class="font-medium">${product.name}</p>
+                                <p class="text-sm text-gray-500">Qty: ${product.quantity}</p>
+                            </div>
+                            <span class="font-semibold">$${(product.price * product.quantity).toFixed(2)}</span>
+                        </div>
+                    `).join('')}
+                </div>
+                
+                <div class="mt-4 border-t pt-4">
+                    <div class="flex justify-between mb-2">
+                        <span>Subtotal:</span>
+                        <span>$${order.subtotal.toFixed(2)}</span>
+                    </div>
+                    <div class="flex justify-between mb-2">
+                        <span>Shipping:</span>
+                        <span>$${order.shipping.toFixed(2)}</span>
+                    </div>
+                    <div class="flex justify-between text-lg font-bold">
+                        <span>Total:</span>
+                        <span class="price-color">$${order.totalAmount.toFixed(2)}</span>
+                    </div>
+                </div>
+            `;
+
+            // Download receipt functionality
+            document.getElementById('download-receipt').addEventListener('click', function() {
+                const element = document.getElementById('order-details');
+                const opt = {
+                    margin: 1,
+                    filename: `receipt-${order.orderId}.pdf`,
+                    image: { type: 'jpeg', quality: 0.98 },
+                    html2canvas: { scale: 2 },
+                    jsPDF: { unit: 'in', format: 'letter', orientation: 'portrait' }
+                };
+
+                html2pdf().set(opt).from(element).save();
+            });
+        });
+    </script>
+</body>
+</html>

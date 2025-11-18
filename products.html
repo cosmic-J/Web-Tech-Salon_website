@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Products - Glow & Bloom Beauty</title>
+    <link rel="stylesheet" href="style.css" />
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Feather icons -->
+    <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <style>
+        /* Additional styles for enhanced header and spacing */
+        .enhanced-header {
+            padding-top: 100px;
+            padding-bottom: 60px;
+        }
+        
+        .enhanced-title {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        @media (max-width: 768px) {
+            .enhanced-header {
+                padding-top: 80px;
+                padding-bottom: 40px;
+            }
+            
+            .enhanced-title {
+                font-size: 2.5rem;
+            }
+        }
+
+        /* Custom filter button styles with #8B3A3A color */
+        .filter-btn {
+            padding: 0.5rem 1.5rem;
+            border-radius: 9999px;
+            border: 1px solid #d1d5db;
+            color: #374151;
+            font-weight: 500;
+            transition: all 0.2s;
+            font-size: 0.875rem;
+        }
+
+        .filter-btn:hover {
+            border-color: #8B3A3A;
+            color: #8B3A3A;
+        }
+
+        .filter-btn.active {
+            background-color: #8B3A3A;
+            color: #fff;
+            border-color: #8B3A3A;
+        }
+
+        /* Custom price color class */
+        .price-color {
+            color: #8B3A3A;
+        }
+
+        /* Custom button colors */
+        .btn-primary {
+            background-color: #8B3A3A;
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background-color: #6B2A2A;
+        }
+
+        /* Cart styles */
+        .cart-badge {
+            position: absolute;
+            top: -8px;
+            right: -8px;
+            background-color: #8B3A3A;
+            color: white;
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.75rem;
+            font-weight: bold;
+        }
+
+        #products-cart-panel {
+            transition: transform 0.3s ease;
+        }
+        
+        #products-cart-panel.hidden {
+            transform: translateX(100%);
+        }
+    </style>
+</head>
+
+<body class="font-montserrat bg-white text-gray-800">
+    <custom-navbar></custom-navbar>
+
+    <main>
+        <!-- Products Header - ENHANCED SECTION -->
+        <section class="relative enhanced-header bg-gradient-to-r from-pink-50 to-purple-50">
+            <div class="max-w-7xl mx-auto px-6 text-center">
+                <h1 class="enhanced-title font-playfair font-bold mb-4">Our Premium Products</h1>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                    Discover our carefully curated collection of salon-quality products designed to enhance your natural beauty
+                </p>
+            </div>
+        </section>
+
+        <!-- Products Filter -->
+        <section class="py-6 bg-white border-b">
+            <div class="max-w-7xl mx-auto px-6">
+                <div class="flex flex-wrap gap-3 justify-center">
+                    <button class="filter-btn active px-4 py-2 text-sm" data-filter="all">All Products</button>
+                    <button class="filter-btn px-4 py-2 text-sm" data-filter="moisturizer">Moisturizers</button>
+                    <button class="filter-btn px-4 py-2 text-sm" data-filter="sunscreen">Sunscreens</button>
+                    <button class="filter-btn px-4 py-2 text-sm" data-filter="serum">Serums</button>
+                    <button class="filter-btn px-4 py-2 text-sm" data-filter="cleanser">Cleansers</button>
+                    <button class="filter-btn px-4 py-2 text-sm" data-filter="hair">Hair Care</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Products Grid -->
+        <section class="py-12 px-6 max-w-7xl mx-auto">
+            <div id="products-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+                <!-- Products will be dynamically loaded here -->
+            </div>
+        </section>
+
+        <!-- Product Modal -->
+        <div id="product-modal" class="fixed inset-0 bg-black bg-opacity-50 z-[110] hidden">
+            <div class="flex items-center justify-center min-h-screen p-4">
+                <div class="bg-white rounded-2xl max-w-4xl w-full max-h-[90vh] overflow-y-auto">
+                    <div class="p-6">
+                        <div class="flex justify-between items-start mb-6">
+                            <h2 id="modal-title" class="text-3xl font-playfair font-bold"></h2>
+                            <button id="close-modal" class="text-gray-500 hover:text-gray-700">
+                                <i data-feather="x" class="w-6 h-6"></i>
+                            </button>
+                        </div>
+                        
+                        <div class="grid md:grid-cols-2 gap-8">
+                            <div>
+                                <img id="modal-image" src="" alt="" class="w-full h-80 object-cover rounded-xl shadow-lg">
+                                <div class="flex gap-4 mt-4">
+                                    <button id="add-to-cart-modal" class="flex-1 btn-primary text-white py-3 rounded-lg font-semibold hover:bg-[#6B2A2A] transition-colors">
+                                        Add to Cart
+                                    </button>
+
+                                    <!-- Circle button with white outline -->
+                                    <button class="p-3 border border-[#8B3A3A] text-[#8B3A3A] rounded-full hover:bg-[#8B3A3A] hover:text-white transition-colors">
+                                        <i data-feather="heart" class="w-5 h-5"></i>
+                                    </button>
+                                </div>
+                            </div>
+
+                            <div>
+                                <div class="flex items-center gap-4 mb-4">
+                                    <span id="modal-price" class="text-3xl font-bold price-color"></span>
+                                    <span id="modal-rating" class="flex items-center text-yellow-400"></span>
+                                </div>
+                                
+                                <p id="modal-description" class="text-gray-600 mb-6"></p>
+                                
+                                <div class="space-y-4">
+                                    <div>
+                                        <h4 class="font-semibold mb-2">Key Benefits</h4>
+                                        <ul id="modal-benefits" class="list-disc list-inside text-gray-600 space-y-1"></ul>
+                                    </div>
+                                    
+                                    <div>
+                                        <h4 class="font-semibold mb-2">Ingredients</h4>
+                                        <p id="modal-ingredients" class="text-gray-600"></p>
+                                    </div>
+                                    
+                                    <div>
+                                        <h4 class="font-semibold mb-2">How to Use</h4>
+                                        <p id="modal-usage" class="text-gray-600"></p>
+                                    </div>
+                                    
+                                    <div class="flex items-center gap-4">
+                                        <label class="font-semibold">Quantity:</label>
+                                        <div class="flex items-center border rounded-lg">
+                                            <button id="decrease-quantity" class="px-3 py-2 text-gray-600 hover:text-[#8B3A3A]">-</button>
+                                            <span id="quantity-display" class="px-3 py-2 w-12 text-center">1</span>
+                                            <button id="increase-quantity" class="px-3 py-2 text-gray-600 hover:text-[#8B3A3A]">+</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Products Cart Panel -->
+        <div id="products-cart-panel" class="fixed top-0 right-0 h-full w-96 bg-white shadow-2xl z-40 transform transition-transform duration-300 hidden">
+            <div class="p-6 h-full flex flex-col">
+                <div class="flex justify-between items-center mb-6">
+                    <h3 class="text-xl font-playfair font-bold">Your Cart</h3>
+                    <button id="close-products-cart" class="text-gray-500 hover:text-gray-700">
+                        <i data-feather="x" class="w-5 h-5"></i>
+                    </button>
+                </div>
+                
+                <div id="products-cart-list" class="flex-1 overflow-y-auto mb-4">
+                    <div id="empty-products-cart-message" class="text-center text-gray-500 py-8">
+                        <i data-feather="shopping-cart" class="w-12 h-12 mx-auto mb-2 opacity-50"></i>
+                        <p>Your cart is empty</p>
+                    </div>
+                </div>
+                
+                <div class="border-t pt-4">
+                    <div class="flex justify-between mb-2">
+                        <span class="font-semibold">Subtotal:</span>
+                        <span id="products-cart-subtotal" class="font-bold price-color">$0.00</span>
+                    </div>
+                    <div class="flex justify-between mb-4">
+                        <span class="font-semibold">Shipping:</span>
+                        <span id="products-cart-shipping" class="font-bold price-color">$5.00</span>
+                    </div>
+                    <div class="flex justify-between mb-4 text-lg">
+                        <span class="font-bold">Total:</span>
+                        <span id="products-cart-total" class="font-bold price-color">$0.00</span>
+                    </div>
+                    <button id="checkout-products" class="w-full btn-primary text-white py-3 rounded-lg font-semibold hover:bg-[#6B2A2A] transition-colors mb-2">
+                        Buy Now
+                    </button>
+                    <button id="clear-products-cart" class="w-full text-gray-500 hover:text-gray-700 text-sm">
+                        Clear Cart
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Products Cart Toggle Button -->
+        <button id="products-cart-toggle" class="fixed bottom-6 right-6 bg-[#8B3A3A] text-white p-4 rounded-full shadow-lg z-30 hover:bg-[#6B2A2A] transition-colors">
+            <i data-feather="shopping-cart" class="w-6 h-6"></i>
+            <span id="products-cart-count" class="cart-badge hidden">0</span>
+        </button>
+    </main>
+
+    <custom-footer></custom-footer>
+
+    <script src="components/navbar.js"></script>
+    <script src="components/footer.js"></script>
+    <script src="products.js"></script>
+    <script>
+        feather.replace();
+    </script>
+</body>
+</html>

@@ -1,0 +1,597 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Contact Us - Glow & Bloom Beauty</title>
+    <link rel="stylesheet" href="style.css" />
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Feather icons -->
+    <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+    <style>
+        .btn-primary {
+            background-color: #8B3A3A;
+            color: white;
+        }
+        .btn-primary:hover {
+            background-color: #6B2A2A;
+        }
+        .price-color {
+            color: #8B3A3A;
+        }
+        /* Social media link animations */
+        .social-link {
+            transition: all 0.3s ease;
+        }
+        
+        .social-link:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+        
+        /* Form styling */
+        input:focus, select:focus, textarea:focus {
+            transform: scale(1.02);
+            transition: all 0.2s ease;
+        }
+        
+        /* File upload area styling */
+        .file-upload-area:hover {
+            border-color: #8B3A3A;
+            background-color: #fdf2f8;
+        }
+        
+        /* Success animation for form submission */
+        @keyframes successPulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+        
+        .success-animation {
+            animation: successPulse 0.6s ease;
+        }
+    </style>
+</head>
+
+<body class="font-montserrat bg-white text-gray-800">
+    <custom-navbar></custom-navbar>
+
+    <main>
+        <!-- Contact Header -->
+        <section class="relative py-20 bg-gradient-to-r from-pink-50 to-purple-50">
+            <div class="max-w-7xl mx-auto px-6 text-center">
+                <h1 class="text-4xl md:text-5xl font-playfair font-bold mb-6">Let's Create Magic Together</h1>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                    Ready to transform your beauty routine? Get in touch with our expert team today!
+                </p>
+            </div>
+        </section>
+
+        <!-- Selected Services Summary -->
+        <section id="selected-services-summary" class="py-8 bg-gray-50 hidden">
+            <div class="max-w-4xl mx-auto px-6">
+                <div class="bg-white rounded-lg shadow-sm p-6">
+                    <h2 class="text-2xl font-playfair font-bold mb-4">Selected Services</h2>
+                    <div id="services-summary-list" class="mb-4">
+                        <!-- Services will be populated here -->
+                    </div>
+                    <div class="border-t pt-4">
+                        <div class="flex justify-between text-lg font-bold">
+                            <span>Total Amount:</span>
+                            <span id="services-total" class="price-color">$0.00</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact & Booking Section -->
+        <section class="py-16 px-6 max-w-7xl mx-auto">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                <!-- Contact Information & Social Media -->
+                <div class="space-y-8">
+                    <!-- Contact Info -->
+                    <div>
+                        <h2 class="text-3xl font-playfair font-bold mb-6">Get In Touch</h2>
+                        <div class="space-y-6">
+                            <!-- Address -->
+                            <div class="flex items-start">
+                                <div class="w-12 h-12 bg-[#8B3A3A] rounded-full flex items-center justify-center mr-4">
+                                    <i data-feather="map-pin" class="w-6 h-6 text-white"></i>
+                                </div>
+                                <div>
+                                    <h3 class="font-semibold text-lg mb-1">Our Location</h3>
+                                    <p class="text-gray-600">1363 SUNSET BLVD<br>Los Angeles, CA 90026</p>
+                                </div>
+                            </div>
+
+                            <!-- Phone -->
+                            <div class="flex items-start">
+                                <div class="w-12 h-12 bg-[#8B3A3A] rounded-full flex items-center justify-center mr-4">
+                                    <i data-feather="phone" class="w-6 h-6 text-white"></i>
+                                </div>
+                                <div>
+                                    <h3 class="font-semibold text-lg mb-1">Phone Number</h3>
+                                    <p class="text-gray-600">+1 (555) 123-4567<br>Mon-Sat: 9AM-8PM</p>
+                                </div>
+                            </div>
+
+                            <!-- Email -->
+                            <div class="flex items-start">
+                                <div class="w-12 h-12 bg-[#8B3A3A] rounded-full flex items-center justify-center mr-4">
+                                    <i data-feather="mail" class="w-6 h-6 text-white"></i>
+                                </div>
+                                <div>
+                                    <h3 class="font-semibold text-lg mb-1">Email Address</h3>
+                                    <p class="text-gray-600">hello@glowbloombeauty.com<br>care@glowbloombeauty.com</p>
+                                </div>
+                            </div>
+
+                            <!-- Hours -->
+                            <div class="flex items-start">
+                                <div class="w-12 h-12 bg-[#8B3A3A] rounded-full flex items-center justify-center mr-4">
+                                    <i data-feather="clock" class="w-6 h-6 text-white"></i>
+                                </div>
+                                <div>
+                                    <h3 class="font-semibold text-lg mb-1">Opening Hours</h3>
+                                    <p class="text-gray-600">
+                                        Monday - Friday: 9AM - 8PM<br>
+                                        Saturday: 9AM - 6PM<br>
+                                        Sunday: 10AM - 4PM
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Social Media -->
+                    <div>
+                        <h3 class="text-2xl font-playfair font-bold mb-6">Follow Our Journey</h3>
+                        <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                            <a href="https://www.instagram.com/glowbloombeauty" target="_blank" class="social-link bg-gradient-to-br from-pink-500 to-purple-600 text-white p-4 rounded-xl text-center transform hover:scale-105 transition-all duration-300">
+                                <i data-feather="instagram" class="w-6 h-6 mx-auto mb-2"></i>
+                                <span class="text-sm font-semibold">Instagram</span>
+                            </a>
+                            
+                            <a href="https://www.facebook.com/glowbloombeauty" target="_blank" class="social-link bg-blue-600 text-white p-4 rounded-xl text-center transform hover:scale-105 transition-all duration-300">
+                                <i data-feather="facebook" class="w-6 h-6 mx-auto mb-2"></i>
+                                <span class="text-sm font-semibold">Facebook</span>
+                            </a>
+                            
+                            <a href="https://www.tiktok.com/@glowbloombeauty" target="_blank" class="social-link bg-black text-white p-4 rounded-xl text-center transform hover:scale-105 transition-all duration-300">
+                                <i data-feather="video" class="w-6 h-6 mx-auto mb-2"></i>
+                                <span class="text-sm font-semibold">TikTok</span>
+                            </a>
+                            
+                            <a href="https://www.pinterest.com/glowbloombeauty" target="_blank" class="social-link bg-red-600 text-white p-4 rounded-xl text-center transform hover:scale-105 transition-all duration-300">
+                                <i data-feather="heart" class="w-6 h-6 mx-auto mb-2"></i>
+                                <span class="text-sm font-semibold">Pinterest</span>
+                            </a>
+
+                            <a href="https://www.youtube.com/@glowbloombeauty" target="_blank" class="social-link bg-red-600 text-white p-4 rounded-xl text-center transform hover:scale-105 transition-all duration-300">
+                                <i data-feather="youtube" class="w-6 h-6 mx-auto mb-2"></i>
+                                <span class="text-sm font-semibold">YouTube</span>
+                            </a>
+
+                            <a href="https://twitter.com/glowbloombeauty" target="_blank" class="social-link bg-blue-400 text-white p-4 rounded-xl text-center transform hover:scale-105 transition-all duration-300">
+                                <i data-feather="twitter" class="w-6 h-6 mx-auto mb-2"></i>
+                                <span class="text-sm font-semibold">Twitter</span>
+                            </a>
+
+                            <a href="https://www.linkedin.com/company/glowbloombeauty" target="_blank" class="social-link bg-blue-800 text-white p-4 rounded-xl text-center transform hover:scale-105 transition-all duration-300">
+                                <i data-feather="linkedin" class="w-6 h-6 mx-auto mb-2"></i>
+                                <span class="text-sm font-semibold">LinkedIn</span>
+                            </a>
+
+                            <a href="https://wa.me/15551234567" target="_blank" class="social-link bg-green-500 text-white p-4 rounded-xl text-center transform hover:scale-105 transition-all duration-300">
+                                <i data-feather="message-circle" class="w-6 h-6 mx-auto mb-2"></i>
+                                <span class="text-sm font-semibold">WhatsApp</span>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Shop Image -->
+                    <div>
+                        <h3 class="text-2xl font-playfair font-bold mb-4">Find Our Studio</h3>
+                        <div class="bg-gray-200 rounded-2xl overflow-hidden shadow-lg">
+                            <!-- Shop Image -->
+                            <div class="h-64 bg-gradient-to-br from-gray-300 to-gray-400 flex items-center justify-center">
+                                <img src="components/images/shop.jpg" alt="Glow & Bloom Beauty Shop" class="w-full h-full object-cover">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Booking Form -->
+                <div class="bg-white rounded-2xl shadow-xl p-8">
+                    <h2 class="text-3xl font-playfair font-bold mb-2">Book Your Service</h2>
+                    <p class="text-gray-600 mb-8">Tell us about your beauty vision and we'll make it happen!</p>
+
+                    <form id="booking-form" class="space-y-6">
+                        <!-- Personal Information -->
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div>
+                                <label for="first-name" class="block text-sm font-medium text-gray-700 mb-2">First Name *</label>
+                                <input type="text" id="first-name" name="first-name" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#8B3A3A] focus:border-transparent">
+                            </div>
+                            <div>
+                                <label for="last-name" class="block text-sm font-medium text-gray-700 mb-2">Last Name *</label>
+                                <input type="text" id="last-name" name="last-name" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#8B3A3A] focus:border-transparent">
+                            </div>
+                        </div>
+
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div>
+                                <label for="email" class="block text-sm font-medium text-gray-700 mb-2">Email Address *</label>
+                                <input type="email" id="email" name="email" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#8B3A3A] focus:border-transparent">
+                            </div>
+                            <div>
+                                <label for="phone" class="block text-sm font-medium text-gray-700 mb-2">Phone Number *</label>
+                                <input type="tel" id="phone" name="phone" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#8B3A3A] focus:border-transparent">
+                            </div>
+                        </div>
+
+                        <!-- Selected Services Display -->
+                        <div id="selected-services-display" class="hidden">
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Selected Services</label>
+                            <div id="services-display-list" class="bg-gray-50 rounded-lg p-4 mb-4">
+                                <!-- Selected services will be displayed here -->
+                            </div>
+                        </div>
+
+                        <!-- Service Selection (only show if no services from booking) -->
+                        <div id="service-selection-section">
+                            <label for="service" class="block text-sm font-medium text-gray-700 mb-2">Select Service *</label>
+                            <select id="service" name="service" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#8B3A3A] focus:border-transparent">
+                                <option value="">Choose a service...</option>
+                                <optgroup label="Waxing Services">
+                                    <option value="eyebrow-wax">Eyebrow Waxing - $25</option>
+                                    <option value="full-face-wax">Full Face Wax - $45</option>
+                                    <option value="brazilian-wax">Brazilian Wax - $60</option>
+                                    <option value="leg-wax">Full Leg Wax - $55</option>
+                                    <option value="arm-wax">Full Arm Wax - $40</option>
+                                </optgroup>
+                                <optgroup label="Hair Services">
+                                    <option value="permanent-blowout">Permanent Blowout - $85</option>
+                                    <option value="hair-cut">Professional Hair Cut - $65</option>
+                                    <option value="hair-color">Premium Hair Coloring - $120+</option>
+                                    <option value="keratin-treatment">Keratin Treatment - $150</option>
+                                </optgroup>
+                                <optgroup label="Facial Treatments">
+                                    <option value="hydrating-facial">Signature Hydrating Facial - $85</option>
+                                    <option value="anti-aging">Anti-Aging Rejuvenation - $120</option>
+                                    <option value="acne-treatment">Acne Clear Treatment - $95</option>
+                                </optgroup>
+                                <optgroup label="Skin Care">
+                                    <option value="chemical-peel">Advanced Chemical Peel - $150</option>
+                                    <option value="microdermabrasion">Microdermabrasion - $110</option>
+                                    <option value="led-therapy">LED Light Therapy - $90</option>
+                                </optgroup>
+                                <optgroup label="Nail Services">
+                                    <option value="manicure">Classic Manicure - $35</option>
+                                    <option value="pedicure">Spa Pedicure - $45</option>
+                                    <option value="gel-nails">Gel Nails - $50</option>
+                                    <option value="acrylic-nails">Acrylic Nails - $60</option>
+                                </optgroup>
+                                <optgroup label="Makeup Services">
+                                    <option value="bridal-makeup">Bridal Makeup - $150</option>
+                                    <option value="event-makeup">Event Makeup - $85</option>
+                                    <option value="makeup-lesson">Makeup Lesson - $75</option>
+                                </optgroup>
+                                <optgroup label="Special Packages">
+                                    <option value="bridal-package">Bridal Package - Starting at $300</option>
+                                    <option value="spa-day">Full Spa Day - $250</option>
+                                    <option value="custom-package">Custom Package - Contact for Quote</option>
+                                </optgroup>
+                            </select>
+                        </div>
+
+                        <!-- Date & Time -->
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div>
+                                <label for="date" class="block text-sm font-medium text-gray-700 mb-2">Preferred Date *</label>
+                                <input type="date" id="date" name="date" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#8B3A3A] focus:border-transparent">
+                            </div>
+                            <div>
+                                <label for="time" class="block text-sm font-medium text-gray-700 mb-2">Preferred Time *</label>
+                                <select id="time" name="time" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#8B3A3A] focus:border-transparent">
+                                    <option value="">Select time...</option>
+                                    <option value="09:00">9:00 AM</option>
+                                    <option value="10:00">10:00 AM</option>
+                                    <option value="11:00">11:00 AM</option>
+                                    <option value="12:00">12:00 PM</option>
+                                    <option value="13:00">1:00 PM</option>
+                                    <option value="14:00">2:00 PM</option>
+                                    <option value="15:00">3:00 PM</option>
+                                    <option value="16:00">4:00 PM</option>
+                                    <option value="17:00">5:00 PM</option>
+                                    <option value="18:00">6:00 PM</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <!-- Service Description -->
+                        <div>
+                            <label for="description" class="block text-sm font-medium text-gray-700 mb-2">Service Description *</label>
+                            <textarea id="description" name="description" rows="4" required placeholder="Please describe what you're looking for, any specific concerns, and your desired outcome..." class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#8B3A3A] focus:border-transparent"></textarea>
+                        </div>
+
+                        <!-- Image Upload for Reference -->
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Reference Images (Optional)</label>
+                            <div class="border-2 border-dashed border-gray-300 rounded-lg p-6 text-center file-upload-area">
+                                <i data-feather="upload" class="w-8 h-8 text-gray-400 mx-auto mb-2"></i>
+                                <p class="text-gray-500 mb-2">Upload inspiration photos or reference images</p>
+                                <input type="file" id="image-upload" multiple accept="image/*" class="hidden">
+                                <button type="button" id="upload-button" class="btn-primary text-white px-4 py-2 rounded-lg hover:bg-[#6B2A2A] transition-colors">
+                                    Choose Files
+                                </button>
+                                <p class="text-xs text-gray-400 mt-2">Max 5 images, 5MB each</p>
+                            </div>
+                            <div id="image-preview" class="mt-3 grid grid-cols-3 gap-2 hidden">
+                                <!-- Image previews will appear here -->
+                            </div>
+                        </div>
+
+                        <!-- Special Requests -->
+                        <div>
+                            <label for="requests" class="block text-sm font-medium text-gray-700 mb-2">Special Requests or Allergies</label>
+                            <textarea id="requests" name="requests" rows="3" placeholder="Any allergies, sensitivities, or special requirements we should know about..." class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#8B3A3A] focus:border-transparent"></textarea>
+                        </div>
+
+                        <!-- How did you hear about us -->
+                        <div>
+                            <label for="referral" class="block text-sm font-medium text-gray-700 mb-2">How did you hear about us?</label>
+                            <select id="referral" name="referral" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#8B3A3A] focus:border-transparent">
+                                <option value="">Select one...</option>
+                                <option value="instagram">Instagram</option>
+                                <option value="facebook">Facebook</option>
+                                <option value="tiktok">TikTok</option>
+                                <option value="friend">Friend Recommendation</option>
+                                <option value="google">Google Search</option>
+                                <option value="celebrity">Celebrity Feature</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+
+                        <!-- Newsletter Signup -->
+                        <div class="flex items-center">
+                            <input type="checkbox" id="newsletter" name="newsletter" class="w-4 h-4 text-[#8B3A3A] border-gray-300 rounded focus:ring-[#8B3A3A]">
+                            <label for="newsletter" class="ml-2 text-sm text-gray-600">
+                                Sign up for our newsletter to receive beauty tips and exclusive offers
+                            </label>
+                        </div>
+
+                        <!-- Submit Button -->
+                        <button type="submit" class="w-full btn-primary text-white py-4 rounded-lg font-semibold hover:bg-[#6B2A2A] transition-all transform hover:scale-105 duration-300 shadow-lg">
+                            Book My Appointment
+                        </button>
+
+                        <p class="text-xs text-gray-500 text-center">
+                            By booking, you agree to our cancellation policy. We'll contact you within 24 hours to confirm your appointment.
+                        </p>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+        <!-- Emergency Contact Banner -->
+        <section class="bg-gradient-to-r from-red-50 to-pink-100 py-8">
+            <div class="max-w-7xl mx-auto px-6 text-center">
+                <div class="flex flex-col md:flex-row items-center justify-center gap-4">
+                    <div class="flex items-center">
+                        <i data-feather="alert-circle" class="w-6 h-6 text-red-500 mr-2"></i>
+                        <span class="font-semibold">Need to reschedule or cancel?</span>
+                    </div>
+                    <p class="text-gray-600">Call us at <strong>+1 (555) 123-4567</strong> at least 24 hours in advance</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <custom-footer></custom-footer>
+
+    <!-- Scripts at the end for better performance -->
+    <script src="components/navbar.js"></script>
+    <script src="components/footer.js"></script>
+    <script>
+        // Contact page functionality
+        document.addEventListener("DOMContentLoaded", () => {
+            const bookingForm = document.getElementById('booking-form');
+            const imageUpload = document.getElementById('image-upload');
+            const imagePreview = document.getElementById('image-preview');
+            const uploadButton = document.getElementById('upload-button');
+            const servicesSummary = document.getElementById('selected-services-summary');
+            const servicesSummaryList = document.getElementById('services-summary-list');
+            const servicesTotal = document.getElementById('services-total');
+            const selectedServicesDisplay = document.getElementById('selected-services-display');
+            const servicesDisplayList = document.getElementById('services-display-list');
+            const serviceSelectionSection = document.getElementById('service-selection-section');
+            const serviceSelect = document.getElementById('service');
+
+            // Check if there are services from the booking flow
+            const serviceToBook = JSON.parse(localStorage.getItem('serviceToBook') || 'null');
+            const selectedServices = JSON.parse(localStorage.getItem('selectedServices') || '[]');
+            
+            let servicesToDisplay = [];
+            let totalAmount = 0;
+            
+            if (serviceToBook) {
+                servicesToDisplay = [serviceToBook];
+            } else if (selectedServices.length > 0) {
+                servicesToDisplay = selectedServices;
+            }
+
+            if (servicesToDisplay.length > 0) {
+                // Show the services summary section
+                servicesSummary.classList.remove('hidden');
+                selectedServicesDisplay.classList.remove('hidden');
+                serviceSelectionSection.classList.add('hidden');
+                
+                // Remove required attribute from service select since we have pre-selected services
+                serviceSelect.removeAttribute('required');
+                
+                servicesSummaryList.innerHTML = '';
+                servicesDisplayList.innerHTML = '';
+                
+                servicesToDisplay.forEach((service, index) => {
+                    const serviceTotal = service.price * service.quantity;
+                    totalAmount += serviceTotal;
+                    
+                    // Add to summary section
+                    const summaryElement = document.createElement('div');
+                    summaryElement.className = 'border-b border-gray-200 pb-3 mb-3';
+                    summaryElement.innerHTML = `
+                        <div class="flex justify-between items-start">
+                            <div class="flex-1">
+                                <h4 class="font-semibold text-gray-800">${service.name}</h4>
+                                ${service.variation ? `<p class="text-sm text-gray-600 mt-1">${service.variation}</p>` : ''}
+                                <div class="flex items-center justify-between mt-2">
+                                    <p class="text-sm text-gray-500">Qty: ${service.quantity}</p>
+                                    <p class="text-sm font-semibold text-[#8B3A3A]">$${serviceTotal.toFixed(2)}</p>
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                    servicesSummaryList.appendChild(summaryElement);
+
+                    // Add to form display
+                    const displayElement = document.createElement('div');
+                    displayElement.className = 'text-sm text-gray-600 mb-2';
+                    displayElement.innerHTML = `
+                        <strong>${service.name}</strong>
+                        ${service.variation ? ` - ${service.variation}` : ''}
+                        (Qty: ${service.quantity}) - $${serviceTotal.toFixed(2)}
+                    `;
+                    servicesDisplayList.appendChild(displayElement);
+                });
+                
+                servicesTotal.textContent = `$${totalAmount.toFixed(2)}`;
+                
+                // Pre-fill description with services info
+                const descriptionTextarea = document.getElementById('description');
+                let servicesText = 'Selected Services:\n';
+                servicesToDisplay.forEach(service => {
+                    servicesText += `• ${service.name}${service.variation ? ` (${service.variation})` : ''} - $${service.price} x ${service.quantity}\n`;
+                });
+                servicesText += '\nAdditional notes: ';
+                descriptionTextarea.value = servicesText;
+            }
+
+            // Image upload button functionality
+            uploadButton.addEventListener('click', () => {
+                imageUpload.click();
+            });
+
+            // Image upload preview functionality
+            imageUpload.addEventListener('change', function(e) {
+                imagePreview.innerHTML = '';
+                imagePreview.classList.remove('hidden');
+                
+                const files = e.target.files;
+                for (let i = 0; i < Math.min(files.length, 5); i++) {
+                    const file = files[i];
+                    const reader = new FileReader();
+                    
+                    reader.onload = function(e) {
+                        const img = document.createElement('img');
+                        img.src = e.target.result;
+                        img.className = 'w-full h-20 object-cover rounded-lg';
+                        img.alt = 'Upload preview image';
+                        imagePreview.appendChild(img);
+                    }
+                    
+                    reader.readAsDataURL(file);
+                }
+            });
+
+            // Form submission
+            bookingForm.addEventListener('submit', async function(e) {
+                e.preventDefault();
+                
+                // Simple form validation
+                const requiredFields = bookingForm.querySelectorAll('[required]');
+                let valid = true;
+                
+                requiredFields.forEach(field => {
+                    if (!field.value.trim()) {
+                        valid = false;
+                        field.classList.add('border-red-500');
+                    } else {
+                        field.classList.remove('border-red-500');
+                    }
+                });
+
+                if (valid) {
+                    const formData = new FormData(this);
+                    
+                    // Prepare appointment data for MongoDB
+                    const appointmentData = {
+                        customerName: `${formData.get('first-name')} ${formData.get('last-name')}`,
+                        email: formData.get('email'),
+                        phone: formData.get('phone'),
+                        date: formData.get('date'),
+                        time: formData.get('time'),
+                        services: servicesToDisplay.length > 0 ? servicesToDisplay : [],
+                        totalAmount: totalAmount,
+                        notes: `Service Description: ${formData.get('description')}\nSpecial Requests: ${formData.get('requests')}\nReferral: ${formData.get('referral')}`
+                    };
+
+                    console.log('Sending appointment data to MongoDB:', appointmentData);
+
+                    try {
+                        const response = await fetch('/api/appointments', {
+                            method: 'POST',
+                            headers: {
+                                'Content-Type': 'application/json',
+                            },
+                            body: JSON.stringify(appointmentData)
+                        });
+
+                        const result = await response.json();
+
+                        if (result.success) {
+                            // Clear stored service data
+                            localStorage.removeItem('serviceToBook');
+                            localStorage.removeItem('selectedServices');
+                            
+                            // Show success message
+                            alert('Appointment booked successfully! We will contact you within 24 hours to confirm.');
+                            bookingForm.reset();
+                            imagePreview.classList.add('hidden');
+                            imagePreview.innerHTML = '';
+                            
+                            // Redirect to confirmation
+                            localStorage.setItem('lastAppointment', JSON.stringify(result.appointment));
+                            window.location.href = 'appointment-confirmation.html';
+                        } else {
+                            console.error('API Error:', result);
+                            alert('Failed to book appointment. Please try again. Error: ' + (result.error || 'Unknown error'));
+                        }
+                    } catch (error) {
+                        console.error('Network Error:', error);
+                        alert('Failed to book appointment. Please check your connection and try again.');
+                    }
+                } else {
+                    alert('Please fill in all required fields.');
+                }
+            });
+
+            // Set minimum date to today
+            const dateInput = document.querySelector('input[type="date"]');
+            const today = new Date().toISOString().split('T')[0];
+            dateInput.min = today;
+
+            // Initialize feather icons
+            if (typeof feather !== 'undefined') {
+                feather.replace();
+            }
+        });
+    </script>
+</body>
+</html>
